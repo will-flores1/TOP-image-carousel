@@ -7,18 +7,19 @@ let prevButton = document.getElementById("nav-button--prev");
 let currentSlide = 0;
 let nextSlide = 0;
 
-function parseNextSlide() {
-	nextSlide = (nextSlide + slides.length) % slides.length;
-}
-
-function toggleClasses(className, ...elementArr) {
-	if (elementArr.length === 0) return;
-
-	elementArr.forEach((element) => {
-		element.classList.toggle(className);
-	});
-}
 function changeSlide(newSlide) {
+	function parseNextSlide() {
+		nextSlide = (nextSlide + slides.length) % slides.length;
+	}
+
+	function toggleClasses(className, ...elementArr) {
+		if (elementArr.length === 0) return;
+
+		elementArr.forEach((element) => {
+			element.classList.toggle(className);
+		});
+	}
+
 	nextSlide = newSlide;
 	parseNextSlide();
 	toggleClasses(
@@ -32,6 +33,7 @@ function changeSlide(newSlide) {
 	currentSlide = nextSlide;
 }
 
+// Handler
 nextButton.addEventListener("click", () => {
 	changeSlide(currentSlide + 1);
 });
